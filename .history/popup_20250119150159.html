@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>坐标转换</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .input-section {
+        margin-bottom: 30px;
+      }
+
+      .coordinate-input {
+        width: 100%;
+        padding: 12px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+
+      .coordinate-types {
+        margin: 20px 0;
+        display: flex;
+        gap: 20px;
+      }
+
+      .radio-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .radio-group input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+      }
+
+      .convert-btn {
+        background-color: #1890ff;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .result-section {
+        margin-top: 30px;
+      }
+
+      .coordinate-system {
+        margin-bottom: 20px;
+      }
+
+      .coordinate-system h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .coordinate-value {
+        margin: 5px 0;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>当前地图坐标系</h2>
+    <div class="coordinate-types">
+      <div class="radio-group">
+        <input type="radio" id="current-wgs84" name="currentCoordType" checked>
+        <label for="current-wgs84">WGS84</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="current-gcj02" name="currentCoordType">
+        <label for="current-gcj02">GCJ02</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="current-bd09" name="currentCoordType">
+        <label for="current-bd09">BD09</label>
+      </div>
+    </div>
+
+    <button class="convert-btn">转换</button>
+
+    <div class="result-section">
+      <div class="coordinate-system">
+        <h3>WGS84</h3>
+        <div class="coordinate-value">纬度: 31.24146483702314</div>
+        <div class="coordinate-value">经度: 121.49531704483836</div>
+      </div>
+
+      <div class="coordinate-system">
+        <h3>GCJ02</h3>
+        <div class="coordinate-value">纬度: 31.23946510898726</div>
+        <div class="coordinate-value">经度: 121.49976613091872</div>
+      </div>
+
+      <div class="coordinate-system">
+        <h3>BD09</h3>
+        <div class="coordinate-value">纬度: 31.24510501795234</div>
+        <div class="coordinate-value">经度: 121.50637688128666</div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelector('.convert-btn').addEventListener('click', function() {
+        // Add conversion logic here
+        console.log('Converting coordinates...');
+      });
+    </script>
+  </body>
+</html> 

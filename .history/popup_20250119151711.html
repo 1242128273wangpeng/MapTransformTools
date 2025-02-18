@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <title>坐标转换</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        padding: 15px;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .input-section {
+        margin-bottom: 10px;
+      }
+
+      .coordinate-input {
+        width: 90%;  /* 移除了calc计算，使用完整宽度 */
+        padding: 4px 8px;
+        margin: 2px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 13px;
+        height: 24px;
+        box-sizing: border-box;
+      }
+
+      .coordinate-types {
+        margin: 10px 0;
+        display: flex;
+        gap: 15px;
+      }
+
+      .radio-group {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .radio-group input[type="radio"] {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+      }
+
+      .convert-btn {
+        background-color: #1890ff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .result-section {
+        margin-top: 15px;
+      }
+
+      .coordinate-system {
+        margin-bottom: 12px;
+      }
+
+      .coordinate-system h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .coordinate-value {
+        margin: 3px 0;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>当前地图坐标系</h2>
+    <div class="coordinate-types">
+      <div class="radio-group">
+        <input type="radio" id="current-wgs84" name="currentCoordType" checked>
+        <label for="current-wgs84">WGS84</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="current-gcj02" name="currentCoordType">
+        <label for="current-gcj02">GCJ02</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="current-bd09" name="currentCoordType">
+        <label for="current-bd09">BD09</label>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <h2>输入坐标</h2>
+      <input type="text" class="coordinate-input" value="36.74675927405943">
+      <input type="text" class="coordinate-input" value="118.56252193450929">
+    </div>
+
+    <button class="convert-btn">转换</button>
+
+    <div class="result-section">
+      <div class="coordinate-system">
+        <h3>WGS84</h3>
+        <div class="coordinate-value">纬度: 31.24146483702314</div>
+        <div class="coordinate-value">经度: 121.49531704483836</div>
+      </div>
+
+      <div class="coordinate-system">
+        <h3>GCJ02</h3>
+        <div class="coordinate-value">纬度: 31.23946510898726</div>
+        <div class="coordinate-value">经度: 121.49976613091872</div>
+      </div>
+
+      <div class="coordinate-system">
+        <h3>BD09</h3>
+        <div class="coordinate-value">纬度: 31.24510501795234</div>
+        <div class="coordinate-value">经度: 121.50637688128666</div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html> 

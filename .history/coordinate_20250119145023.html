@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>在线地图坐标系转换</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .tab-header {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab-header a {
+            text-decoration: none;
+            color: #666;
+            margin-right: 20px;
+            padding: 10px 0;
+            display: inline-block;
+        }
+        
+        .tab-header a.active {
+            color: #1890ff;
+            border-bottom: 2px solid #1890ff;
+        }
+        
+        .input-section {
+            margin: 20px 0;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        select, input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        button {
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .convert-btn {
+            background-color: #00925f;
+            color: white;
+        }
+        
+        .secondary-btn {
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        
+        .coordinate-systems {
+            margin-top: 20px;
+        }
+        
+        .coordinate-system {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>在线地图坐标系转换</h1>
+    
+    <div class="tab-header">
+        <a href="#" class="active">坐标工具</a>
+        <a href="#">经纬度</a>
+        <a href="#">位置</a>
+    </div>
+    
+    <div class="input-section">
+        <h3>输入坐标</h3>
+        <textarea placeholder="请输入浮点数经纬度坐标，经度在前，纬度在后，使用英文逗号分隔。批量转换时每行输入一条记录。"></textarea>
+    </div>
+    
+    <div class="controls">
+        <select id="coordinateSystem">
+            <option value="WGS84">WGS84</option>
+        </select>
+        
+        <input type="text" placeholder="精度">
+        
+        <button class="convert-btn">转换</button>
+        <button class="secondary-btn">当前位置</button>
+        <button class="secondary-btn">清空</button>
+    </div>
+    
+    <div class="coordinate-systems">
+        <div class="coordinate-system">WGS84坐标系</div>
+        <div class="coordinate-system">GCJ02坐标系</div>
+        <div class="coordinate-system">BD09坐标系</div>
+    </div>
+
+    <script>
+        // Add basic functionality
+        document.querySelector('.convert-btn').addEventListener('click', function() {
+            alert('转换功能需要实现具体的转换逻辑');
+        });
+        
+        document.querySelector('.secondary-btn').addEventListener('click', function() {
+            alert('获取当前位置功能需要实现定位逻辑');
+        });
+    </script>
+</body>
+</html> 

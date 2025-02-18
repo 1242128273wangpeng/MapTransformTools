@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGIS Helper</title>
+    <!-- Include Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .menu-button {
+            font-size: 24px;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        
+        .title {
+            font-size: 20px;
+            margin: 0;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 24px;
+        }
+        
+        .container {
+            display: flex;
+            height: calc(100vh - 50px);
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        #map {
+            flex-grow: 1;
+            height: 100%;
+        }
+        
+        .coordinate-input {
+            margin-bottom: 20px;
+        }
+        
+        .coordinate-input input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .coordinate-type {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .convert-btn {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .map-types {
+            position: absolute;
+            right: 10px;
+            top: 60px;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .map-types div {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .map-types div:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .coordinates-display {
+            margin-top: 20px;
+        }
+        
+        .coordinate-system {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="menu-button">☰</button>
+        <h1 class="title">WebGIS Helper</h1>
+        <div class="controls">
+            <label>Pick Mode</label>
+            <input type="checkbox" id="pickMode">
+            <label>Auto Convert</label>
+            <input type="checkbox" id="autoConvert">
+            <label>Dark Mode</label>
+            <input type="checkbox" id="darkMode">
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h3>当前地图坐标系</h3>
+            <div>WGS84</div>
+            
+            <div class="coordinate-input">
+                <h3>输入坐标</h3>
+                <input type="text" placeholder="纬度" value="36.74675927405943">
+                <input type="text" placeholder="经度" value="118.56252193450929">
+            </div>
+            
+            <div class="coordinate-type">
+                <input type="radio" name="coordType" checked> WGS84
+                <input type="radio" name="coordType"> GCJ02
+                <input type="radio" name="coordType"> BD09
+            </div>
+            
+            <button class="convert-btn">转换</button>
+            
+            <div class="coordinates-display">
+                <div class="coordinate-system">
+                    <h4>WGS84</h4>
+                    <div>纬度: 31.24146483702314</div>
+                    <div>经度: 121.49531704483836</div>
+                </div>
+                
+                <div class="coordinate-system">
+                    <h4>GCJ02</h4>
+                    <div>纬度: 31.23946510898726</div>
+                    <div>经度: 121.49976613091872</div>
+                </div>
+                
+                <div class="coordinate-system">
+                    <h4>BD09</h4>
+                    <div>纬度: 31.24510501795234</div>
+                    <div>经度: 121.50637688128666</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="map"></div>
+        
+        <div class="map-types">
+            <div>天地图</div>
+            <div>高德</div>
+            <div>谷歌</div>
+            <div>智图</div>
+            <div>OSM</div>
+            <div>百度</div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([31.24146483702314, 121.49531704483836], 13);
+        
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        
+        // Add markers for each coordinate system
+        L.marker([31.24146483702314, 121.49531704483836]).addTo(map);
+        L.marker([31.23946510898726, 121.49976613091872]).addTo(map);
+        L.marker([31.24510501795234, 121.50637688128666]).addTo(map);
+    </script>
+</body>
+</html> 
