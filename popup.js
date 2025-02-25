@@ -35,8 +35,7 @@ function copy(str, mimeType) {
 	};
 	try {
 		var successful = document.execCommand('copy', false, null);
-		var msg = successful ? 'successful' : 'unsuccessful';
-		console.log('Copying text command was ' + msg);
+		console.log('Copying text command was ' + str);
 		if (!successful) {
 			navigator.clipboard.writeText(str).then(
 				function () {
@@ -70,7 +69,7 @@ function updateCopyIcon(eleId) {
 	}, 500);
 }
 
-function copyBD09LatLon() {
+function copyBD09LatLon(swap = false) {
 	let res = '';
 	const lat = document
 		.getElementById('bd09-lat')
@@ -78,12 +77,14 @@ function copyBD09LatLon() {
 	const lng = document
 		.getElementById('bd09-lon')
 		.textContent.replace('经度: ', '');
-	res = lat + ',' + lng;
+
+	res = swap === true ? lng + ',' + lat : lat + ',' + lng;
 	copy(res, 'text/plain');
+	updateCopyIcon(swap === true ? 'copy_swap_bd09' : 'copy_bd09');
 	updateCopyIcon('copy_bd09');
 }
 
-function copyGCJ02LatLon() {
+function copyGCJ02LatLon(swap) {
 	let res = '';
 	const lat = document
 		.getElementById('gcj02-lat')
@@ -92,12 +93,12 @@ function copyGCJ02LatLon() {
 	const lng = document
 		.getElementById('gcj02-lon')
 		.textContent.replace('经度: ', '');
-	res = lat + ',' + lng;
+	res = swap === true ? lng + ',' + lat : lat + ',' + lng;
 	copy(res, 'text/plain');
-	updateCopyIcon('copy_gcj02');
+	updateCopyIcon(swap === true ? 'copy_swap_gcj02' : 'copy_gcj02');
 }
 
-function copyWGS84LatLon() {
+function copyWGS84LatLon(swap) {
 	let res = '';
 	const lat = document
 		.getElementById('wgs84-lat')
@@ -105,9 +106,9 @@ function copyWGS84LatLon() {
 	const lng = document
 		.getElementById('wgs84-lon')
 		.textContent.replace('经度: ', '');
-	res = lat + ',' + lng;
+	res = swap === true ? lng + ',' + lat : lat + ',' + lng;
 	copy(res, 'text/plain');
-	updateCopyIcon('copy_wgs84');
+	updateCopyIcon(swap === true ? 'copy_swap_wgs84' : 'copy_wgs84');
 }
 
 function addEventListener() {
@@ -120,6 +121,21 @@ function addEventListener() {
 	document.getElementById('copy_gcj02').addEventListener('click', function () {
 		copyGCJ02LatLon();
 	});
+	document
+		.getElementById('copy_swap_bd09')
+		.addEventListener('click', function () {
+			copyBD09LatLon(true);
+		});
+	document
+		.getElementById('copy_swap_wgs84')
+		.addEventListener('click', function () {
+			copyWGS84LatLon(true);
+		});
+	document
+		.getElementById('copy_swap_gcj02')
+		.addEventListener('click', function () {
+			copyGCJ02LatLon(true);
+		});
 	document
 		.getElementById('bd09_location')
 		.addEventListener('click', function () {
